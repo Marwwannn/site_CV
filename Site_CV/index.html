@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan YOUMNI - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ajout de Font Awesome pour de belles icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Ajout de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body>
+    <!-- Menu fixe modernisé -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo"></div>
+            <ul>
+                <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="#competences"><i class="fas fa-code"></i> Compétences</a></li>
+                <li><a href="#projets"><i class="fas fa-project-diagram"></i> Projets</a></li>
+                <li><a href="#experience"><i class="fas fa-briefcase"></i> Expérience</a></li>
+                <li><a href="#formation"><i class="fas fa-graduation-cap"></i> Formation</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section Accueil avec animation -->
+    <section id="accueil" class="hero-section">
+        <div class="background-animation"></div>
+        <div class="profile-container">
+            <div class="profile-image">
+                <img src="IMG_4424.jpg" alt="Photo professionnelle">
+            </div>
+            <div class="profile-content">
+                <h1 class="main-title">
+                    <span class="title-line">Développeur Full Stack &</span>
+                    <span class="title-line">Spécialiste Base de Données</span>
+                </h1>
+                <div class="presentation">
+                    <p>Actuellement en BUT (Bachelor universitaire de technologie) Informatique à l'IUT Paul Sabatier, je me spécialise dans la gestion et 
+                       l'analyse des bases de données. Passionné par l'intelligence artificielle et les nouvelles technologies, je combine 
+                       créativité technique et rigueur analytique pour créer des solutions efficaces.</p>
+                    
+                    <p>Mon parcours m'a permis de développer une expertise particulière en :</p>
+                    <ul class="expertise-list">
+                        <li>Développement d'applications de gestion</li>
+                        <li>Conception et optimisation de bases de données</li>
+                        <li>Analyse de données et création de tableaux de bord</li>
+                    </ul>
+                </div>
+                <div class="cta-buttons">
+                    <a href="CV_YOUMNI.pdf" class="btn primary-btn" target="_blank">
+                        <i class="fas fa-file-pdf"></i> Voir mon CV
+                    </a>
+                    <a href="https://github.com/Marwwannn" class="btn secondary-btn" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences avec animation au scroll -->
+    <section id="competences" class="scroll-reveal">
+        <h2><span class="accent">Outils</span></h2>
+        <div class="skills-container">
+            <div class="skill-category fade-in">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3>Langages</h3>
+                <ul>
+                    <li data-tooltip="Langage de requêtes pour la gestion et la manipulation des bases de données">SQL</li>
+                    <li data-tooltip="Langages de balisage et de style pour la création de sites web">HTML/CSS</li>
+                    <li data-tooltip="Langage polyvalent utilisé en data science, IA et développement web">Python</li>
+                    <li data-tooltip="Langage orienté objet pour le développement d'applications">Java</li>
+                    <li data-tooltip="Langage de programmation côté serveur pour le développement web">PHP</li>
+                </ul>
+            </div>
+            <div class="skill-category fade-in">
+                <div class="skill-icon"><i class="fas fa-tools"></i></div>
+                <h3>Outils</h3>
+                <ul>
+                    <li data-tooltip="Système de gestion de base de données relationnelle open source">PostgreSQL</li>
+                    <li data-tooltip="Outil de visualisation et d'analyse de données de Microsoft">Power BI</li>
+                    <li data-tooltip="Bibliothèques Python pour l'analyse de données, le machine learning et le NLP">Pandas, Scikit-learn, FastText</li>
+                    <li data-tooltip="Bibliothèque Python pour le deep learning">Keras</li>
+                    <li data-tooltip="Framework open source pour l'apprentissage automatique">TensorFlow</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <div class="skills-iut">
+        <h3>Compétences</h3>
+        <div class="skills-grid">
+            <div class="skill-item realiser">
+                <h4>Réaliser</h4>
+                <p>Niveau 2</p>
+                <p>Partir des exigences et aller jusqu'à une application complète</p>
+            </div>
+
+            <div class="skill-item optimiser">
+                <h4>Optimiser</h4>
+                <p>Niveau 2</p>
+                <p>Sélectionner les algorithmes adéquats pour répondre à un problème donné</p>
+            </div>
+
+            <div class="skill-item administrer">
+                <h4>Administrer</h4>
+                <p>Niveau 2</p>
+                <p>Déployer des services dans une architecture réseau</p>
+            </div>
+
+            <div class="skill-item gerer">
+                <h4>Gérer</h4>
+                <p>Niveau 3</p>
+                <p>Administrer une base de données, concevoir et réaliser des systèmes d'informations décisionnels</p>
+            </div>
+
+            <div class="skill-item conduire">
+                <h4>Conduire</h4>
+                <p>Niveau 3</p>
+                <p>Participer à la conception et à la mise en œuvre d'un projet système d'information</p>
+            </div>
+
+            <div class="skill-item collaborer">
+                <h4>Collaborer</h4>
+                <p>Niveau 3</p>
+                <p>Manager une équipe informatique</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Projets avec effet de survol -->
+    <section id="projets" class="scroll-reveal">
+        <h2><span class="accent">Projets Réalisés</span></h2>
+        <div class="projects-grid">
+            <div class="project-card" id="analyse-sentiments" data-skills="realiser,optimiser,administrer,gerer,conduire,collaborer">
+                <h3>Analyse de Sentiments sur les Avis Littéraires</h3>
+                <p>Développement d'un système d'analyse de sentiments pour prédire la polarité et le score des commentaires de livres. 
+                Création de modèles de deep learning et machine learning pour l'analyse textuelle, utilisant différentes représentations 
+                (TF-IDF, BERT, embeddings) et visualisation avancée des données (WordCloud, distributions, corrélations).</p>
+                
+                <div class="project-stats">
+                    <div class="pie-chart" style="background-image: conic-gradient(
+                        #4CAF50 0% 35%,
+                        #2196F3 35% 55%,
+                        #FFC107 55% 75%,
+                        #FF9800 75% 100%
+                    );"></div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #4CAF50;"></span>
+                            <span>Python (35%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #2196F3;"></span>
+                            <span>PyTorch/BERT (20%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #FFC107;"></span>
+                            <span>Scikit-learn (20%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #FF9800;"></span>
+                            <span>Pandas/NumPy (25%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="result-title">Aperçu des analyses de sentiments</h4>
+                <div class="project-image">
+                    <img src="emot.png" alt="Visualisation des analyses de sentiments" class="dashboard-img">
+                </div>
+            </div>
+            <div class="project-card" id="analyse-climatique" data-skills="optimiser,gerer,conduire,collaborer">
+                <h3>Analyse de données sur le changement climatique</h3>
+
+                <p>Projet d'analyse approfondie des données climatiques mondiales, impliquant le nettoyage et la fusion de multiples sources de données (températures, émissions de CO2, niveau des mers). Création d'un dashboard interactif sur Power BI permettant de visualiser les tendances et corrélations.</p>
+                
+                <div class="project-stats">
+                    <div class="pie-chart climate-chart"></div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #4CAF50;"></span>
+                            <span>Python (30%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #2196F3;"></span>
+                            <span>Analyse de données (50%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #FFC107;"></span>
+                            <span>Power BI (20%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="result-title">Aperçu du dashboard final</h4>
+                <div class="project-image">
+                    <img src="dashboard.png" alt="Dashboard Power BI du projet climatique" class="dashboard-img">
+                </div>
+            </div>
+            <div class="project-card" id="moteur-recommandation" data-skills="realiser,optimiser,administrer,gerer,conduire,collaborer">
+                <h3>Moteur de recommandation</h3>
+                <p>Développement d'un moteur de recherche et d'un moteur de recommandation de séries TV à partir de sous-titres, incluant une API REST et différents modèles d'apprentissage (Word2Vec, FastText, BERT).</p>
+                
+                <div class="project-stats">
+                    <div class="pie-chart recommendation-chart"></div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #4CAF50;"></span>
+                            <span>Python (API) (40%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #8dd30c;"></span>
+                            <span>Modèles FastText (50%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #2196F3;"></span>
+                            <span>HTML/CSS (10%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="result-title">Aperçu de l'interface finale</h4>
+                <div class="project-image">
+                    <img src="recherche.png" alt="Interface du moteur de recherche" class="dashboard-img">
+                </div>
+            </div>
+
+            <!-- Nouveaux projets -->
+            <div class="project-card" id="site-ecommerce" data-skills="realiser,collaborer,gerer">
+                <h3>Site E-commerce</h3>
+                <p>Application web de gestion commerciale comprenant : <br>
+                    • Gestion des stocks en temps réel <br>
+                    • Interface administrateur et système de panier <br>
+                    • Base de données relationnelle sécurisée</p>
+
+                
+                <div class="project-stats">
+                    <div class="pie-chart recommendation-chart"></div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #4CAF50;"></span>
+                            <span>Java (40%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #2196F3;"></span>
+                            <span>SQL (30%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #FFC107;"></span>
+                            <span>HTML/CSS/PHP (30%)</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <h4 class="result-title">Aperçu du projet</h4>
+                <div class="project-image">
+                    <img src="site_e-commerce.png" alt="Interface du site e-commerce" class="dashboard-img">
+                </div>
+            </div>
+
+            <div class="project-card" id="app-immobiliere" data-skills="conduire,gerer,collaborer,realiser">
+                <h3>Application Immobilière</h3>
+                <p>Solution Java dédiée aux agences immobilières intégrant : <br>
+                    • Gestion complète des biens immobiliers <br>
+                    • Système de recherche avancée (prix, surface, localisation) <br>
+                    • Suivi des clients et des transactions <br>
+                    • Base de données sécurisée</p>
+
+                
+                <div class="project-stats">
+                    <div class="pie-chart" style="background-image: conic-gradient(
+                        #4CAF50 0% 40%,
+                        #2196F3 40% 70%,
+                        #FFC107 70% 85%,
+                        #FF9800 85% 100%
+                    );"></div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #4CAF50;"></span>
+                            <span>Java (40%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #2196F3;"></span>
+                            <span>SQL (30%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #FFC107;"></span>
+                            <span>WindowBuilder (15%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #FF9800;"></span>
+                            <span>GitHub (15%)</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <h4 class="result-title">Aperçu de l'interface</h4>
+                <div class="project-image">
+                    <img src="agence-immobiliere.png" alt="Interface de l'application immobilière" class="dashboard-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Expérience -->
+    <section id="experience">
+        <h2>EXPERIENCE PROFESSIONELLE</h2>
+        <div class="experience-container">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3>Développeur Application stagiaire 2024 - 8 semaines | Commerce Alimentaire Traditionnel</h3>
+                </div>
+                <div class="description">
+                    <p>Développement d'un site de gestion de stock et création d'un dashboard :</p>
+                    <ul>
+                        <li>Création d'une interface de gestion des stocks</li>
+                        <li>Développement d'un tableau de bord analytique présentant :</li>
+                        <ul class="sub-list">
+                            <li>Analyse des meilleures et pires ventes</li>
+                            <li>Suivi du chiffre d'affaires</li>
+                            <li>Monitoring des quantités de produits</li>
+                            <li>Visualisation des données avec Power BI</li>
+                        </ul>
+                    </ul>
+                </div>
+                <div class="competences">
+                    <h4>Compétences techniques :</h4>
+                    <div class="technologies-used">
+                        <span>Python</span>
+                        <span>HTML/CSS</span>
+                        <span>SQL</span>
+                    </div>
+                    <h4>Outil :</h4>
+                    <div class="technologies-used">
+                        <span>PowerBI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3>Développeur d'application stagiaire 2023 - 9 semaines | Reel sas</h3>
+                </div>
+                <div class="description">
+                    <p>Développement d'une application de gestion des stocks :</p>
+                    <ul>
+                        <li>Implémentation de nouvelles fonctionnalités</li>
+                        <li>Gestion de base de données avec PostgreSQL</li>
+                        <li>Développement d'un ORM pour la liaison entre les objets Python et la base de données</li>
+                        <li>Création d'un système de téléchargement de l'application en HTML/CSS</li>
+                    </ul>
+                </div>
+                <div class="competences">
+                    <h4>Compétences techniques :</h4>
+                    <div class="technologies-used">
+                        <span>PostgreSQL</span>
+                        <span>Python</span>
+                        <span>HTML / CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Formation -->
+    <section id="formation">
+        <h2>FORMATION</h2>
+        <div class="formation-container">
+            <div class="formation-card">
+                <h3>BUT Informatique - Spécialité Bases de Données</h3>
+                <div class="">IUT Paul Sabatier, Université Toulouse 3 | 2022 - 2025</div>
+            </div>
+
+            <div class="formation-card">
+                <h3>Baccalauréat Technologique ST2ID</h3>
+                <div class="">Lycée Déodat de Séverac | 2019 - 2021</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact">
+        <div class="section-header">
+            <h2>CONTACT</h2>
+        </div>
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Section Objectifs et Perspectives -->
+    <section id="perspectives">
+        <div class="section-header">
+            <h2>OBJECTIFS & PERSPECTIVES</h2>
+        </div>
+        <div class="content-wrapper">
+            <div class="card">
+                <h3>Évolution des Compétences</h3>
+                <div class="card-content">
+                    <p>Au cours de ma formation et de mes expériences professionnelles, j'ai développé :</p>
+                    <ul>
+                        <li>Une maîtrise approfondie des bases de données avec PostgreSQL</li>
+                        <li>Des compétences en développement Python et création d'interfaces</li>
+                        <li>Une expertise en analyse de données et visualisation avec Power BI</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="perspectives-avenir">
+                    <h3>Perspectives d'Avenir</h3>
+                    <p>Mes objectifs pour la suite de mon parcours :</p>
+                    <ul>
+                        <li>Approfondir mes connaissances en Data Engineering</li>
+                        <li>Développer une expertise en Business Intelligence</li>
+                        <li>Me spécialiser dans l'Intelligence Artificielle pour devenir expert dans ce domaine</li>
+                        <li>Participer à des projets innovants mêlant IA, gestion de données et développement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ajout d'un footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/Marwwannn" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/marwan-youmni" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2024 Marwan YOUMNI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Ajout de JavaScript pour les animations -->
+    <script>
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+
+        // Animation du titre lettre par lettre
+        const title = document.querySelector('.main-title');
+        const text = title.textContent;
+        title.textContent = '';
+        
+        // Créer un span pour chaque lettre
+        text.split('').forEach((char, i) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.style.animationDelay = `${i * 0.1}s`; // Délai progressif
+            title.appendChild(span);
+        });
+    </script>
+</body>
+</html>
+

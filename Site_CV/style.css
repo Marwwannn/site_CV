@@ -1,0 +1,1174 @@
+/* Variables pour la cohérence des couleurs */
+:root {
+    --primary-color: #ff0044;    /* Rouge vif comme dans votre CV */
+    --secondary-color: #2a2a2a;  /* Gris foncé */
+    --accent-color: #6b1fb1;     /* Violet pour les accents */
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --section-bg: #f8f9fa;
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Section Accueil */
+#accueil {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 2rem;
+    background: linear-gradient(135deg, var(--background-color) 0%, var(--section-bg) 100%);
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.intro-text {
+    flex: 1;
+}
+
+.tagline {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Sections générales */
+section {
+    position: relative;
+    padding: 4rem 2rem;
+}
+
+section:nth-child(even) {
+    background-color: var(--section-bg);
+}
+
+section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--primary-color, #ff0066),
+        transparent
+    );
+    opacity: 0.3;
+}
+
+/* Compétences */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-category {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-category li {
+    position: relative;
+    padding: 10px 0;
+    cursor: help;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+/* Suppression de tous les styles de points/bullets précédents */
+.skill-category li::before {
+    display: none; /* Supprime tous les pseudo-éléments before existants */
+}
+
+/* Nouveau style pour le tooltip */
+.skill-category li[data-tooltip] {
+    position: relative;
+}
+
+.skill-category li[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(42, 42, 42, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Animation au survol */
+.skill-category li[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    left: 210px;  /* Augmenté à 180px pour déplacer vers la droite */
+}
+
+/* Media query pour les écrans plus petits */
+@media (max-width: 1200px) {
+    .skill-category li[data-tooltip]::after {
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+        margin-top: 5px;
+    }
+}
+
+/* Style pour le conteneur de projets avec scroll horizontal */
+.projects-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 2rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Pour iOS */
+}
+
+/* Masquer la scrollbar tout en gardant la fonctionnalité */
+.projects-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.projects-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+/* Style pour les cartes de projet plus larges */
+.project-card {
+    min-width: 500px;
+    max-width: 500px;
+    padding: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card h3 {
+    color: #ff0066;  /* Rose vif spécifié */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.project-card p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Permet au texte de prendre l'espace disponible */
+}
+
+.technologies {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.technologies span {
+    background-color: var(--section-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.project-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    min-height: 180px;
+}
+
+/* Style pour les camemberts */
+.pie-chart {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+
+.pie-legend {
+    margin-left: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/* Styles pour le premier projet */
+.climate-chart {
+    background: conic-gradient(
+        #4CAF50 0% 30%,    /* Python - Vert */
+        #2196F3 30% 80%,   /* Analyse de données - Bleu */
+        #FFC107 80% 100%   /* Power BI - Jaune */
+    );
+}
+
+/* Styles pour le deuxième projet */
+.recommendation-chart {
+    background: conic-gradient(
+        #4CAF50 0% 40%,    /* Python (API) - Vert */
+        #8dd30c 40% 90%,   /* Modèle FastText - Violet */
+        #2196F3 90% 100%   /* HTML/CSS - Bleu */
+    );
+}
+
+/* Style pour le footer avec un thème moderne */
+footer {
+    background: #9e114a; /* Bleu-gris foncé élégant */
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 4px solid var(--primary-color); /* Garde la bordure rouge */
+    box-shadow: inset 0 15px 25px rgba(0,0,0,0.1); /* Ombre intérieure subtile */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.8rem;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    opacity: 1;
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+/* Contact */
+.contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .projects-grid {
+        max-width: 1000px;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card {
+        padding: 2rem;
+        min-height: auto;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Style pour la section expérience */
+#experience {
+    padding: 4rem 2rem;
+    background: var(--section-bg);
+}
+
+.experience-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.experience-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.experience-header h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.date {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.company {
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.tasks {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.tasks li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tasks li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.technologies-used {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.technologies-used span {
+    background: var(--section-bg);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.competences h4 {
+    color: var(--secondary-color);
+    margin: 1rem 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .experience-card {
+        padding: 1.5rem;
+    }
+
+    .experience-header h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Ajout pour la description */
+.description {
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+.description p {
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.description ul {
+    list-style: none;
+    padding-left: 1.2rem;
+}
+
+.description ul li {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.description ul li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: -1.2rem;
+    font-weight: bold;
+}
+
+/* Ajout pour la sous-liste */
+.description .sub-list {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.description .sub-list li::before {
+    content: "−";  /* Utilisation d'un tiret pour la sous-liste */
+}
+
+/* Style pour la section formation */
+#formation {
+    padding: 4rem 0;
+    background: var(--section-bg);
+}
+
+.formation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.formation-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.formation-card:hover {
+    transform: translateY(-5px);
+}
+
+.formation-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.etablissement {
+    color: var(--accent-color);
+    font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .formation-card {
+        padding: 1.5rem;
+    }
+
+    .formation-card h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Style pour la section contact */
+#contact {
+    padding: 4rem 0;
+    background: var(--section-bg);
+}
+
+#contact h2 {
+    text-align: left;
+    margin-bottom: 2rem;
+    max-width: 1200px;
+    margin-left: 2rem;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.contact-form {
+    background: white;
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 800px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #eef1f6;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 0, 102, 0.1);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 102, 0.2);
+}
+
+/* Animation au focus des champs */
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    opacity: 0.7;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 0 1rem;
+    }
+    
+    .contact-form {
+        padding: 2rem;
+    }
+}
+
+/* Style pour la section héro */
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, var(--section-bg), white);
+}
+
+.profile-container {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profile-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.profile-content {
+    flex: 1;
+}
+
+.profile-content h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.presentation {
+    margin-bottom: 2rem;
+}
+
+.expertise-list {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.expertise-list li {
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+.expertise-list li::before {
+    content: "→";
+    color: var(--primary-color);
+    position: absolute;
+    left: -1.5rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.secondary-btn {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .profile-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-content h1 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+    }
+}
+
+/* Style pour la section Objectifs & Perspectives */
+#perspectives {
+    padding: 4rem 2rem;
+}
+
+#perspectives h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+#perspectives .content-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.evolution-competences, .perspectives-avenir {
+    margin-bottom: 3rem;
+}
+
+.evolution-competences h3, .perspectives-avenir h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#perspectives ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#perspectives li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+#perspectives li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* Style pour les titres des projets */
+.project-card h3 {
+    color: #ff0066;  /* Rose vif spécifié */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Style pour la description du projet */
+.project-card p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+/* Style spécifique pour le titre Évolution des Compétences */
+.evolution-competences h3 {
+    color: var(--secondary-color);  /* Change Évolution des Compétences en gris foncé */
+}
+
+/* Style pour les titres de la section perspectives */
+.perspectives-avenir h3 {
+    color: var(--primary-color);  /* Garde le rouge pour Perspectives d'Avenir */
+}
+
+/* Style commun pour tous les titres de sections */
+section h2,
+#formation h2,
+#contact h2 {
+    text-align: left;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+}
+
+/* Style pour le titre principal */
+.main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-color), #ff0066);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+    margin: 2rem 0;
+    animation: fadeIn 1s ease-out;
+    text-align: center;
+}
+
+/* Animation d'entrée */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Style pour les détails du projet */
+.project-details {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.project-details h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.project-details ul {
+    list-style: none;
+    padding-left: 1.2rem;
+}
+
+.project-details ul ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.project-details li {
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+.project-details li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: -1.2rem;
+    font-weight: bold;
+}
+
+.project-details ul ul li::before {
+    content: "−";  /* Utilisation d'un tiret pour la sous-liste */
+}
+
+/* Style pour l'image du dashboard */
+.project-image {
+    margin: 1.2rem 0;
+    text-align: center;
+}
+
+.dashboard-img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.dashboard-img:hover {
+    transform: scale(1.02);
+}
+
+/* Style pour le titre de l'aperçu */
+.result-title {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.skills-iut {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-iut h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.skill-item {
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+}
+
+.skill-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.skill-item p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Couleurs spécifiques pour chaque compétence */
+.realiser {
+    background-color: #C41E3A;
+}
+
+.optimiser {
+    background-color: #E9967A;
+}
+
+.administrer {
+    background-color: #FFD700;
+}
+
+.gerer {
+    background-color: #90EE90;
+}
+
+.conduire {
+    background-color: #00008B;
+}
+
+.collaborer {
+    background-color: #1C1C1C;
+}
+
+/* Style pour les titres des sections */
+#competences h2,
+#projets h2,
+.skills-iut h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Style pour l'accent */
+#competences h2 .accent,
+#projets h2 .accent {
+    color: var(--secondary-color);
+}
+
+.project-card {
+    transition: all 0.3s ease;
+}
+
+.project-card.highlighted {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 102, 0.5);
+    position: relative;
+    z-index: 10;
+    animation: projectPulse 2s infinite;
+}
+
+@keyframes projectPulse {
+    0% { box-shadow: 0 0 20px rgba(255, 0, 102, 0.5); }
+    50% { box-shadow: 0 0 30px rgba(255, 0, 102, 0.8); }
+    100% { box-shadow: 0 0 20px rgba(255, 0, 102, 0.5); }
+}
+
+/* Style existant pour les compétences mises en évidence */
+.skill-item.highlighted {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 100;
+    animation: skillPulse 2s infinite;
+}
+
+@keyframes skillPulse {
+    0% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+    50% { box-shadow: 0 0 50px rgba(255, 255, 255, 1); }
+    100% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+}
+
+/* Style pour le survol des projets */
+.project-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Ajout du curseur pointer sur les compétences */
+.skill-item {
+    cursor: pointer;
+}
+
+.skill-item, .project-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover, .project-card:hover {
+    opacity: 0.9;
+}
+
+/* Style existant pour les éléments en surbrillance */
+.skill-item.highlighted {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 100;
+    animation: skillPulse 2s infinite;
+}
+
+.project-card.highlighted {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 102, 0.5);
+    position: relative;
+    z-index: 10;
+    animation: projectPulse 2s infinite;
+}
+
