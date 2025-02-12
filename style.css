@@ -1014,24 +1014,32 @@ section h2,
     font-weight: 500;
 }
 
+/* Style pour la section des compétences IUT */
 .skills-iut {
-    padding: 2rem;
+    padding: 4rem 0; /* Augmenté le padding vertical */
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.skills-iut h3 {
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
+    background: var(--section-bg);
+    width: 100%;
 }
 
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 2rem;
+    padding: 0 2rem; /* Modifié le padding pour être cohérent */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-iut h3 {
+    text-align: left; /* Aligné à gauche comme les autres titres */
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 0 2rem; /* Ajouté un padding horizontal */
+    max-width: 1200px;
+    margin: 0 auto 2rem;
 }
 
 .skill-item {
