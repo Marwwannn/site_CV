@@ -30,10 +30,19 @@ body {
     background-color: var(--background-color);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
-.main-nav ul {
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-menu {
     display: flex;
     justify-content: center;
     list-style: none;
@@ -44,12 +53,65 @@ body {
     text-decoration: none;
     color: var(--secondary-color);
     font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     transition: color 0.3s ease;
 }
 
 .main-nav a:hover {
     color: var(--primary-color);
+}
+
+/* Bouton hamburger pour mobile */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Styles pour les appareils mobiles */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-toggle {
+        display: block;
+        z-index: 1001;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        background-color: var(--background-color);
+        width: 80%;
+        height: 100vh;
+        padding-top: 4rem;
+        transition: all 0.3s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .main-nav a {
+        padding: 0.8rem 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Ajuster le padding du contenu principal pour la navbar mobile */
+    #accueil {
+        padding-top: 4rem;
+    }
 }
 
 /* Section Accueil */
@@ -216,6 +278,58 @@ section:not(:last-child)::after {
     padding: 2rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch; /* Pour iOS */
+    cursor: grab; /* Curseur indiquant que le contenu est déplaçable */
+    user-select: none; /* Empêcher la sélection de texte pendant le défilement */
+}
+
+/* Style quand le conteneur est en cours de déplacement */
+.projects-grid.active {
+    cursor: grabbing;
+    scroll-behavior: auto; /* Désactiver le scroll smooth pendant le drag */
+}
+
+/* Ajouter une zone de défilement visuelle */
+.projects-grid::after {
+    content: "";
+    min-width: 10px; /* Espace à la fin pour permettre de faire défiler le dernier projet complètement */
+}
+
+/* Classe pour indiquer que le conteneur est draggable */
+.draggable {
+    position: relative;
+}
+
+.draggable::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 0, 102, 0.1);
+    border-radius: 50%;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.8;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23ff0066" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(-50%) rotate(-90deg); /* Rotation de la flèche vers la droite */
+    animation: fadeInOut 2s infinite;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.2; }
+}
+
+/* Sur les appareils tactiles, ne pas afficher l'indicateur de défilement */
+@media (hover: none) {
+    .draggable::before {
+        display: none;
+    }
 }
 
 /* Masquer la scrollbar tout en gardant la fonctionnalité */
@@ -920,20 +1034,7 @@ section h2,
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     line-height: 1.2;
     margin: 2rem 0;
-    animation: fadeIn 1s ease-out;
     text-align: center;
-}
-
-/* Animation d'entrée */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Responsive design */
@@ -1212,6 +1313,304 @@ section h2,
     to {
         opacity: 1;
         transform: translate(-50%, -50%);
+    }
+}
+
+/* Media query pour les écrans plus petits */
+@media (max-width: 768px) {
+    /* Styles généraux */
+    section {
+        padding: 3rem 1.5rem;
+    }
+
+    /* Styles pour la section Accueil */
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .profile-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-content h1 {
+        font-size: 2rem;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .title-line {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Style pour les compétences */
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .skill-category {
+        padding: 1.5rem;
+    }
+    
+    /* Style pour la grille de compétences IUT */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Style pour les projets */
+    .project-card {
+        min-width: 280px;
+        max-width: 100%;
+        padding: 1.5rem;
+        margin-right: 1rem;
+    }
+    
+    .projects-grid {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .pie-chart {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .project-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .experience-card {
+        padding: 1.5rem;
+    }
+    
+    .experience-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .formation-card {
+        padding: 1.5rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    /* Réduire les marges et paddings en général */
+    h2, h3 {
+        margin-bottom: 1rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Ajustements spécifiques pour améliorer la lisibilité sur mobile */
+    .skill-category li[data-tooltip]::after {
+        width: 200px;
+    }
+}
+
+/* Media query pour les très petits écrans */
+@media (max-width: 480px) {
+    .profile-image img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .main-title {
+        font-size: 1.5rem;
+    }
+    
+    .project-card {
+        min-width: 240px;
+    }
+    
+    .pie-chart {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Réduire les tailles des textes sur les petits appareils */
+    body {
+        font-size: 0.9rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Style pour la section combinée Contact et Objectifs */
+#contact-perspectives {
+    padding: 4rem 0 6rem 0; /* Augmenté le padding bottom pour éviter de toucher le footer */
+    background: var(--section-bg);
+    margin-bottom: 2rem; /* Marge supplémentaire en bas */
+}
+
+.combined-section-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+    padding: 0 2rem;
+    align-items: flex-start; /* Aligner les colonnes en haut */
+}
+
+.combined-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Styles pour les titres de section */
+.contact-col .section-header h2,
+.perspectives-col .section-header h2 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+/* Styles pour la colonne Contact */
+.contact-col .contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: calc(100% - 3rem); /* Ajusté pour tenir compte du header */
+}
+
+.contact-col .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-col .form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.contact-col .form-group input,
+.contact-col .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.contact-col .submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+/* Styles pour la colonne Perspectives */
+.perspectives-col .card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.perspectives-col .card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.perspectives-col .card p {
+    margin-bottom: 1rem;
+}
+
+/* Style pour les listes avec flèches rouges */
+.arrow-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.arrow-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.arrow-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Ajustements responsive */
+@media (max-width: 768px) {
+    .combined-section-container {
+        flex-direction: column;
+        padding: 0 1.5rem;
+    }
+    
+    .combined-column {
+        width: 100%;
+    }
+    
+    .contact-col .contact-form,
+    .perspectives-col .card {
+        padding: 1.5rem;
+    }
+    
+    .perspectives-col .card:last-child {
+        margin-bottom: 0;
+    }
+    
+    #contact-perspectives {
+        padding: 3rem 0 4rem 0; /* Ajusté pour mobile */
     }
 }
 
